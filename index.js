@@ -5,7 +5,10 @@ const { typeDefs, resolvers } = require('./src/graphql')
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({ req }) => {
+        return { user: 'toni' }
+    }
     // context: ({ req }) => {
     //     // get the user token from the headers
     //     const token = req.headers.authorization
