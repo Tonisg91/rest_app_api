@@ -6,7 +6,7 @@ module.exports = WithAuditModel('Company', {
     CIF: String,
     logo: String,
     owner: {
-        type: Schema.Types.objectId,
+        type: Schema.Types.ObjectId,
         ref: 'User'
     },
     phoneNumber: String,
