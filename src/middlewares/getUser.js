@@ -13,12 +13,10 @@ module.exports = async (token) => {
 
         if (!user) return null
 
-        const { _id, role, company } = user
+        const { iat, exp, ...userData } = decoded
 
         return {
-            _id,
-            role,
-            company
+            ...userData
         }
     } catch (error) {
         console.error(error)

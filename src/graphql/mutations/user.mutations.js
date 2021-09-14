@@ -6,8 +6,8 @@ const {
 } = require('apollo-server-errors')
 
 const createUser = async (_, args, context) => {
-    if (!context.user || !context.user.company) {
-        return new AuthenticationError('Debes iniciar sesion')
+    if (!context.user) {
+        return new AuthenticationError('No autorizado')
     }
 
     const { dni, name, lastname } = args
