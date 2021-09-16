@@ -7,7 +7,7 @@ const {
 
 const createUser = async (_, args, context) => {
     if (!context.user) {
-        return new AuthenticationError('No autorizado')
+        return new AuthenticationError('Por favor, inicia sesión.')
     }
 
     const { dni, name, lastname } = args

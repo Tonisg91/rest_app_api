@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose')
-const WithAuditModel = require('./ WithAudit.model')
+const WithAuditModel = require('./WithAudit.model')
 
 module.exports = WithAuditModel('Company', {
     name: String,
