@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server-core')
 
 const typeDefs = gql`
+    scalar Date
+
     type Query {
         ping: String
         company: [Company]
@@ -12,6 +14,14 @@ const typeDefs = gql`
         login(dni: String!, password: String!): AuthPayload
 
         createCompany(CIF: String!, name: String!, owner: String!): Company
+        createProduct(
+            name: String!
+            price: Float
+            cost: Float
+            productType: String!
+            image: String
+            provider: ID
+        ): Product
     }
 
     type AuthPayload {
@@ -32,7 +42,7 @@ const typeDefs = gql`
         productType: String
         createdBy: User
         updatedBy: User
-        createdAt: String
+        createdAt: Date
         updatedAt: String
     }
 

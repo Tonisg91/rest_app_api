@@ -15,10 +15,15 @@ const resolvers = {
     Mutation: {
         ...mutations.auth,
         ...mutations.company,
-        ...mutations.user
+        ...mutations.user,
+        ...mutations.product
     },
     Company: {
         owner: populateInstance('User', 'owner')
+    },
+    Product: {
+        createdBy: populateInstance('User', 'createdBy'),
+        provider: populateInstance('Provider', 'provider')
     }
 }
 
