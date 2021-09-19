@@ -2,18 +2,25 @@ const { gql } = require('apollo-server-core')
 
 const typeDefs = gql`
     scalar Date
+    scalar Void
 
+    # QUERIES
     type Query {
         ping: String
         company: [Company]
-        singleCompany(id: ID): Company
+        singleCompany(id: ID!): Company
+        singleProduct(id: ID!): Product
     }
+    # QUERIES END
+
+    # MUTATIONS
     type Mutation {
         createUser(dni: String!, name: String!, lastname: String): User
 
         login(dni: String!, password: String!): AuthPayload
 
         createCompany(CIF: String!, name: String!, owner: String!): Company
+
         createProduct(
             name: String!
             price: Float
@@ -35,7 +42,33 @@ const typeDefs = gql`
             image: String
             provider: ID
         ): Product
+        deactivateProduct(id: ID!): Void
+
+        createOrder(
+            tableNumber: String!
+            productList: [productListInput]!
+        ): Order
+
+        updateOrder(
+            id: ID!
+            tableNumber: String
+            productList: [productListInput]
+        ): Order
+
+        deactivateOrder(id: ID!): Void
     }
+    # MUTATIONS END
+
+    # INPUTS
+    input productListInput {
+        item: ID!
+        qty: Int!
+        comments: String
+    }
+
+    # INPUTS END
+
+    # TYPES
 
     type AuthPayload {
         token: String
@@ -100,6 +133,19 @@ const typeDefs = gql`
         updatedBy: User
         createdAt: String
         updatedAt: String
+    }
+
+    type Order {
+        _id: ID!
+        tableNumber: String
+        employee: User
+        productList: [productList]
+    }
+
+    type productList {
+        item: Product
+        qty: Int!
+        comments: String
     }
 `
 

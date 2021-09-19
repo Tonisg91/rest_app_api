@@ -4,8 +4,8 @@
   "description": "Backend server for restaurant ecosystem.",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node .",
-    "dev": "NODE_ENV=development nodemon ./src/index.js",
+    "start": "NODE_ENV=production node ./src",
+    "dev": "NODE_ENV=development nodemon ./src",
     "lint": "eslint ./ --fix",
     "test": "NODE_ENV=test jest --verbose ",
     "test:silent": "NODE_ENV=test jest --verbose --silent",
@@ -17,9 +17,11 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
@@ -36,13 +38,13 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
-    "apollo-server-express": "^3.3.0",
+    "apollo-server": "^3.3.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
     "graphql": "^15.5.3",
+    "graphql-tools": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.5",
     "morgan": "^1.10.0",

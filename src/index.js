@@ -1,7 +1,10 @@
-const app = require('./src/app')
-const { ApolloServer, AuthenticationError } = require('apollo-server-express')
-const { typeDefs, resolvers } = require('./src/graphql')
-const getUser = require('./src/middlewares/getUser')
+require('dotenv').config()
+require('./config/db.config')
+
+const { ApolloServer } = require('apollo-server')
+
+const { typeDefs, resolvers } = require('./graphql')
+const getUser = require('./middlewares/getUser')
 
 const server = new ApolloServer({
     typeDefs,
@@ -22,4 +25,6 @@ const server = new ApolloServer({
     }
 })
 
-server.start().then(() => server.applyMiddleware({ app }))
+server.listen().then(({ url }) => {
+    console.log(`Server ready at ${url}`)
+})
