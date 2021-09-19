@@ -20,6 +20,19 @@ const typeDefs = gql`
             cost: Float
             productType: String!
             image: String
+            stock: Int
+            warehouseStock: Int
+            provider: ID
+        ): Product
+        updateProduct(
+            id: ID!
+            name: String
+            price: Float
+            cost: Float
+            productType: String
+            stock: Int
+            warehouseStock: Int
+            image: String
             provider: ID
         ): Product
     }
@@ -36,8 +49,8 @@ const typeDefs = gql`
         price: Float
         cost: Float
         provider: Provider
-        stock: Float
-        warehouseStock: Float
+        stock: Int
+        warehouseStock: Int
         image: String
         productType: String
         createdBy: User
