@@ -10,6 +10,7 @@ const typeDefs = gql`
         company: [Company]
         singleCompany(id: ID!): Company
         singleProduct(id: ID!): Product
+        singleOrder(id: ID!): Order
         ordersOfCompany(company: ID!): [Order]
     }
     # QUERIES END
@@ -59,6 +60,7 @@ const typeDefs = gql`
             id: ID!
             tableNumber: String
             productList: [productListInput]
+            status: OrderStatus
         ): Order
 
         deactivateOrder(id: ID!): Void
@@ -145,10 +147,16 @@ const typeDefs = gql`
         _id: ID!
         tableNumber: String
         productList: [productList]
+        status: OrderStatus
         createdBy: User
         updatedBy: User
         createdAt: String
         updatedAt: String
+    }
+
+    enum OrderStatus {
+        OPEN
+        CLOSED
     }
 
     type productList {
