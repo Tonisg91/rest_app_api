@@ -10,6 +10,8 @@ const resolvers = {
             return 'Pong madafaka'
         },
         company: async () => await M.Company.find(),
+        companyUsers: async (_, _vars, context) =>
+            await M.User.find({ company: context.user.company }),
         ordersOfCompany: async (_, _vars, context) =>
             await M.Order.find({ company: context.user.company }),
         singleOrder: async (_, { id }) => await M.Order.findById(id),

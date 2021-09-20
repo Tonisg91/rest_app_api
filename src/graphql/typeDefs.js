@@ -8,10 +8,11 @@ const typeDefs = gql`
     type Query {
         ping: String
         company: [Company]
+        companyUsers: [User]
         singleCompany(id: ID!): Company
         singleProduct(id: ID!): Product
         singleOrder(id: ID!): Order
-        ordersOfCompany(company: ID!): [Order]
+        ordersOfCompany: [Order]
     }
     # QUERIES END
 
