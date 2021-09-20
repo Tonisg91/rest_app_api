@@ -1,6 +1,11 @@
 const M = require('../models')
 const mutations = require('./mutations')
-const { populateInstance } = require('./utils')
+const {
+    populateInstance,
+    populateFromArray,
+    populateFromArrayOfObjects,
+    populateProductList
+} = require('./utils')
 
 const resolvers = {
     Query: {
@@ -26,6 +31,11 @@ const resolvers = {
     Product: {
         createdBy: populateInstance('User', 'createdBy'),
         provider: populateInstance('Provider', 'provider')
+    },
+    Order: {
+        createdBy: populateInstance('User', 'createdBy'),
+        updatedBy: populateInstance('User', 'createdBy'),
+        productList: populateProductList
     }
 }
 

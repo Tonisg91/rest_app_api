@@ -21,6 +21,8 @@ const typeDefs = gql`
 
         createCompany(CIF: String!, name: String!, owner: String!): Company
 
+        # PRODUCT MUTATION
+
         createProduct(
             name: String!
             price: Float
@@ -42,7 +44,10 @@ const typeDefs = gql`
             image: String
             provider: ID
         ): Product
+
         deactivateProduct(id: ID!): Void
+
+        # ORDER MUTATIONS
 
         createOrder(
             tableNumber: String!
@@ -138,12 +143,15 @@ const typeDefs = gql`
     type Order {
         _id: ID!
         tableNumber: String
-        employee: User
         productList: [productList]
+        createdBy: User
+        updatedBy: User
+        createdAt: String
+        updatedAt: String
     }
 
     type productList {
-        item: Product
+        item: Product!
         qty: Int!
         comments: String
     }
