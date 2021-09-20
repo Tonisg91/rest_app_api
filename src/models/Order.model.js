@@ -1,4 +1,5 @@
 const { Schema } = require('mongoose')
+const { OPEN, ORDER_STATUS } = require('../utils/constants')
 const WithAuditModel = require('./WithAudit.model')
 
 const productListSubSchema = new Schema(
@@ -22,5 +23,10 @@ module.exports = WithAuditModel('Order', {
         ref: 'Company'
     },
     tableNumber: String,
-    productList: [productListSubSchema]
+    productList: [productListSubSchema],
+    status: {
+        type: String,
+        default: OPEN,
+        enum: ORDER_STATUS
+    }
 })

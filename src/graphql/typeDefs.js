@@ -10,6 +10,7 @@ const typeDefs = gql`
         company: [Company]
         singleCompany(id: ID!): Company
         singleProduct(id: ID!): Product
+        ordersOfCompany(company: ID!): [Order]
     }
     # QUERIES END
 

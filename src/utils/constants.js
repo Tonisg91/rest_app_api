@@ -10,3 +10,8 @@ exports.DRINK = 'DRINK'
 exports.PLATE = 'PLATE'
 
 exports.PRODUCT_TYPES = [this.INGREDIENT, this.DRINK, this.PLATE]
+
+exports.OPEN = 'OPEN'
+exports.CLOSED = 'CLOSED'
+
+exports.ORDER_STATUS = [this.CLOSED, this.OPEN]
