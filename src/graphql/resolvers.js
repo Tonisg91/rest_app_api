@@ -1,4 +1,5 @@
 const M = require('../models')
+const { INGREDIENT } = require('../utils/constants')
 const mutations = require('./mutations')
 const { populateInstance, populateProductList } = require('./utils')
 
@@ -12,6 +13,11 @@ const resolvers = {
         company: async () => await M.Company.find(),
         companyUsers: async (_, _vars, context) =>
             await M.User.find({ company: context.user.company }),
+        companyProducts: async (_, _vars, context) =>
+            await M.Product.find({
+                company: context.user.company,
+                productType: { $ne: INGREDIENT }
+            }),
         ordersOfCompany: async (_, _vars, context) =>
             await M.Order.find({ company: context.user.company }),
         singleOrder: async (_, { id }) => await M.Order.findById(id),

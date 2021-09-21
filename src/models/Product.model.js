@@ -6,6 +6,7 @@ module.exports = WithAuditModel('Product', {
     name: String,
     price: Number,
     cost: Number,
+    category: String,
     company: {
         type: Schema.Types.ObjectId,
         ref: 'Company'

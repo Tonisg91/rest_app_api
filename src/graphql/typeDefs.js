@@ -9,6 +9,7 @@ const typeDefs = gql`
         ping: String
         company: [Company]
         companyUsers: [User]
+        companyProducts: [Product]
         singleCompany(id: ID!): Company
         singleProduct(id: ID!): Product
         singleOrder(id: ID!): Order
@@ -29,6 +30,7 @@ const typeDefs = gql`
         createProduct(
             name: String!
             price: Float
+            category: String
             cost: Float
             productType: String!
             image: String
@@ -86,6 +88,7 @@ const typeDefs = gql`
 
     type Product {
         _id: ID!
+        category: String
         company: Company!
         name: String
         price: Float
